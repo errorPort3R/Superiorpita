@@ -5,4 +5,5 @@ package com.nataandporterinc.entities;
  */
 public class Customer
 {
+
 }
