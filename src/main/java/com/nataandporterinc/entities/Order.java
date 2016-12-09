@@ -28,6 +28,7 @@ public class Order
     private int id;
 
     @Column(nullable = false)
+    @ManyToOne
     private ArrayList<Product> products;
 
     @Column(nullable = false)
