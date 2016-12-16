@@ -15,11 +15,8 @@ public class Customer
     @GeneratedValue
     private int id;
 
-    @Column(nullable = false, unique = true)
-    private String username;
-
-    @Column(nullable = false)
-    private String password;
+    @Column(unique = true)
+    private User user;
 
     @Column(nullable = false)
     private String firstName;
@@ -32,10 +29,8 @@ public class Customer
     @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false)
-    private String address1;
-
-    private String address2;
+    @ManyToOne
+    ArrayList<Address> addresses;
 
     @Column(nullable = false)
     private String city;
@@ -56,16 +51,14 @@ public class Customer
     {
     }
 
-    public Customer(String username, String password, String firstName, String lastName, String company, String email, String address1, String address2, String city, String state, Integer zip, String phone, ArrayList<Order> orders)
+    public Customer(User user, String firstName, String lastName, String company, String email, Address address, String city, String state, Integer zip, String phone, ArrayList<Order> orders)
     {
-        this.username = username;
-        this.password = password;
+        this.user = user;
         this.firstName = firstName;
         this.lastName = lastName;
         this.company = company;
         this.email = email;
-        this.address1 = address1;
-        this.address2 = address2;
+        this.addresses.add(address);
         this.city = city;
         this.state = state;
         this.zip = zip;
@@ -83,24 +76,14 @@ public class Customer
         this.id = id;
     }
 
-    public String getUsername()
+    public User getUser()
     {
-        return username;
+        return user;
     }
 
-    public void setUsername(String username)
+    public void setUser(User user)
     {
-        this.username = username;
-    }
-
-    public String getPassword()
-    {
-        return password;
-    }
-
-    public void setPassword(String password)
-    {
-        this.password = password;
+        this.user = user;
     }
 
     public String getFirstName()
@@ -143,24 +126,14 @@ public class Customer
         this.email = email;
     }
 
-    public String getAddress1()
+    public ArrayList<Address> getAddresses()
     {
-        return address1;
+        return addresses;
     }
 
-    public void setAddress1(String address1)
+    public void setAddresses(ArrayList<Address> addresses)
     {
-        this.address1 = address1;
-    }
-
-    public String getAddress2()
-    {
-        return address2;
-    }
-
-    public void setAddress2(String address2)
-    {
-        this.address2 = address2;
+        this.addresses = addresses;
     }
 
     public String getCity()

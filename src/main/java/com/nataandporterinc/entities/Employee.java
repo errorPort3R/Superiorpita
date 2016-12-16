@@ -14,20 +14,20 @@ public class Employee
     @GeneratedValue
     private int id;
 
-    @Column(nullable = false)
-    private String username;
+    @Column(unique = true)
+    private User user;
 
-    @Column(nullable = false)
-    private String password;
+    @Column(unique = true)
+    private Customer customer;
 
     public Employee()
     {
     }
 
-    public Employee(String username, String password)
+    public Employee(User user, Customer customer)
     {
-        this.username = username;
-        this.password = password;
+        this.user = user;
+        this.customer = customer;
     }
 
     public int getId()
@@ -40,23 +40,23 @@ public class Employee
         this.id = id;
     }
 
-    public String getUsername()
+    public User getUser()
     {
-        return username;
+        return user;
     }
 
-    public void setUsername(String username)
+    public void setUser(User user)
     {
-        this.username = username;
+        this.user = user;
     }
 
-    public String getPassword()
+    public Customer getCustomer()
     {
-        return password;
+        return customer;
     }
 
-    public void setPassword(String password)
+    public void setCustomer(Customer customer)
     {
-        this.password = password;
+        this.customer = customer;
     }
 }
